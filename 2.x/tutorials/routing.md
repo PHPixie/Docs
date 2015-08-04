@@ -12,21 +12,29 @@ The name of each route **must be unique** , if there is more than one route with
 
 The first member of the array is the rule for this route. Before you learn about customizing the URL, let’s look at a quick example, the default route.
 
-```php(/<controller>(/<action>(/<id>)))```
+```php
+(/<controller>(/<action>(/<id>)))
+```
 
 This means that the first part of the URL is treated as the name of the controller that should be used, the second part is the action and the last one is an _id_ parameter that we can pass along. For example the link _/fairies/view/4_ will fire _action\_view_ in _Fairies\_Controller_ and you can access the _id_ parameter by using:
 
-```php$this->request->param('id');```
+```php
+$this->request->param('id');
+```
 
 The _param_ method also accepts a second parameter, a default value, for situations where _id_ will not be set.
 
 Now what do those brackets mean? The brackets are simply a way of marking that this part of the route is optional. Please not that slashes always go at the beginning of the url segment. So while this is valid:
 
-```php/<controller>(/<action>)```
+```php
+/<controller>(/<action>)
+```
 
 this is not:
 
-```php/<controller>/(<action>)```
+```php
+/<controller>/(<action>)
+```
 
 You can add any number of parameters to a route, the only rule here is that they must be enclosed in tags. By default each parameter can consist of both letters and numbers, but what if you want to specify a specific format, for example force it to be numeric? For such situations you can pass an array instead of a string as a route, like this:
 
